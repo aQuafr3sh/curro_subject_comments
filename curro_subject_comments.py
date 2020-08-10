@@ -98,12 +98,6 @@ for file in Path(csv_dir).glob("*.csv"):
                 assignment_count += 1
             student_count += 1
 
-        # Figure out how to let the functions work - later
-        # category_comment(4, pleasure_file)
-        # category_comment(5, attention_file)
-        # category_comment(6, disrupt_file)
-        # category_comment(7, reading_file)
-
         # Other observation comments
         student_count = 0
         while student_count < len(data_list):
