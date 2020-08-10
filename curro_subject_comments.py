@@ -48,7 +48,7 @@ def random_line(fname):
 # Iterate through each CSV file in die CSV directory and create a new directory where comments will be stored
 # based on the CSV file name
 for file in Path(csv_dir).glob("*.csv"):
-    with open(file, 'r') as csv_file:
+    with open(file, encoding="utf-8", mode='r') as csv_file:
         class_path = file.name[:-4]
         if not os.path.exists(txt_dir + f"\\{class_path}"):
             os.mkdir(txt_dir + f"\\{class_path}")
@@ -179,8 +179,10 @@ while sub_index < len(subfolder_name):
     col = 0
     workbook = xlsxwriter.Workbook(subfolder_path[sub_index] + f"\\{subfolder_name[sub_index]}.xlsx")
     worksheet = workbook.add_worksheet()
+    worksheet.set_column("A:A", 40)
+    worksheet.set_column("B:B", 200)
     for file in Path(subfolder_path[sub_index]).glob("*.txt"):
-        with open(file, "r") as txt_file:
+        with open(file, encoding="utf-8", mode="r") as txt_file:
             worksheet.write(row, col, file.name[:-4])
             worksheet.write(row, col + 1, file.read_text())
             row += 1
